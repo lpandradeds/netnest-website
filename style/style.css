@@ -1,0 +1,84 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../assets/fonts/JetBrainsMono/static/jetbrains-mono-latin-ext-800-normal.woff') format('woff'),
+         url('../assets/fonts/JetBrainsMono/static/jetbrains-mono-latin-ext-800-normal.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+.world{
+    /* Desabilitar seleção */
+    user-select: none;          /* Padrão */
+    -webkit-user-select: none;  /* Safari / Chrome */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer */
+    -webkit-tap-highlight-color: transparent;
+
+    /* The panel is exactly the viewport and is the only scroll container */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    background-color: rgb(32, 28, 61);
+  }
+  .content{
+    /* Desabilitar seleção */
+    user-select: none;          /* Padrão */
+    -webkit-user-select: none;  /* Safari / Chrome */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer */
+    -webkit-tap-highlight-color: transparent;
+
+    width: 6000px;
+    height: 6000px;
+    font-size: 15px;
+    font-family: 'JetBrainsMono', monospace;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: grab;
+  }
+
+  .world:active .content {
+    cursor: grabbing;
+  }
+
+  .container {
+    background-color: rgb(248, 234, 230);
+    padding-left: 25px;
+    padding-right: 20px;
+    padding-top: 25px;
+    padding-bottom: 40px;
+    border-radius: 10px;
+    color: black;
+    max-width: 300px;
+    text-wrap: wrap;
+  }
+
+  .nav {
+    border-radius: 20px;
+    background-color: rgb(94, 77, 61);
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .nav::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgb(117, 113, 108);
+    transform: translate(10px, 10px);
+    z-index: -1;
+    background-clip: padding-box;
+  }
