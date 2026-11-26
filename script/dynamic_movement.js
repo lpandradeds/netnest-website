@@ -1,70 +1,67 @@
-let mouseDown = false;
-<<<<<<< HEAD
+const content = document.querySelector('.content'); // camera / scroll container
+const world   = document.querySelector('.world');   // 6000x6000 map
+
+/* ---------- Start centered on the map ---------- */
+function centerView() {
+  content.scrollLeft = (world.offsetWidth  - content.clientWidth)  / 2;
+  content.scrollTop  = (world.offsetHeight - content.clientHeight) / 2;
+}
+
+if (document.readyState === 'complete') {
+  centerView();
+} else {
+  window.addEventListener('load', centerView);
+}
+
+/* ---------- Drag to pan ---------- */
+let isDragging = false;
+let moved = false;
 let startX = 0;
 let startY = 0;
-let scrollLeft = 0;
-let scrollTop = 0;
-const slider = document.querySelector('.world');
+let startScrollLeft = 0;
+let startScrollTop = 0;
 
-if (slider) {
-  const startDragging = (e) => {
-    mouseDown = true;
+content.addEventListener('pointerdown', (e) => {
+  if (e.pointerType === 'mouse' && e.button !== 0) return;
 
-    const rect = slider.getBoundingClientRect();
-    startX = e.clientX - rect.left;
-    startY = e.clientY - rect.top;
+  isDragging = true;
+  moved = false;
+  startX = e.clientX;
+  startY = e.clientY;
+  startScrollLeft = content.scrollLeft;
+  startScrollTop  = content.scrollTop;
+  content.classList.add('dragging');
+});
 
-    scrollLeft = slider.scrollLeft;
-    scrollTop = slider.scrollTop;
-  };
+window.addEventListener('pointermove', (e) => {
+  if (!isDragging) return;
 
-  const stopDragging = () => {
-    mouseDown = false;
-  };
+  const dx = e.clientX - startX;
+  const dy = e.clientY - startY;
 
-  const move = (e) => {
-    if (!mouseDown) return;
+  if (!moved && (Math.abs(dx) > 3 || Math.abs(dy) > 3)) {
+    moved = true;
+    content.setPointerCapture?.(e.pointerId);
+  }
 
+  content.scrollLeft = startScrollLeft - dx;
+  content.scrollTop  = startScrollTop  - dy;
+});
+
+function endDrag() {
+  if (!isDragging) return;
+  isDragging = false;
+  content.classList.remove('dragging');
+  if (content.hasPointerCapture?.(/* id */)) {}
+}
+window.addEventListener('pointerup', endDrag);
+window.addEventListener('pointercancel', endDrag);
+
+/* Suppress the click that ends a drag */
+content.addEventListener('click', (e) => {
+  if (moved) {
+    e.stopPropagation();
     e.preventDefault();
-
-    const rect = slider.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    slider.scrollLeft = scrollLeft - (x - startX);
-    slider.scrollTop = scrollTop - (y - startY);
-  };
-
-  slider.addEventListener('mousemove', move);
-  slider.addEventListener('mousedown', startDragging);
-  slider.addEventListener('mouseup', stopDragging);
-  slider.addEventListener('mouseleave', stopDragging);
-}
-=======
-let startX, scrollLeft;
-const slider = document.querySelector('.world');
-
-const startDragging = (e) => {
-  mouseDown = true;
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-}
-
-const stopDragging = (e) => {
-  mouseDown = false;
-}
-
-const move = (e) => {
-  e.preventDefault();
-  if(!mouseDown) { return; }
-  const x = e.pageX - slider.offsetLeft;
-  const scroll = x - startX;
-  slider.scrollLeft = scrollLeft - scroll;
-}
-
-// Add the event listeners
-slider.addEventListener('mousemove', move, false);
-slider.addEventListener('mousedown', startDragging, false);
-slider.addEventListener('mouseup', stopDragging, false);
-slider.addEventListener('mouseleave', stopDragging, false);
->>>>>>> 0ad41df934fe04a1e5f016e9c59aae514c023ddf
+    moved = false;
+  }
+}, true);

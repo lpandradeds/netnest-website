@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../assets/fonts/JetBrainsMono/static/jetbrains-mono-latin-ext-800-normal.woff') format('woff'),
+         url('../assets/fonts/JetBrainsMono/static/jetbrains-mono-latin-ext-800-normal.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  body {
+    background: radial-gradient(circle, rgba(41,65,143,1) 0%, rgba(63,102,186,1) 69%);
+    /* make body a flex container so children can be centered */
+    display: flex;
+    justify-content: center;   /* horizontal centering */
+    align-items: stretch;      /* container still fills height */
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    font-family: 'JetBrainsMono', monospace;
+    color: black;
+    font-size: 15px;
+    padding: 40px;
+    box-sizing: border-box;    /* padding no longer adds to height */
+    height: 100%;              /* of body, which is now 100% of viewport */
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #criar-conta {
+    margin-top: auto;
+  }
+
+  .in {
+    position: relative;
+    border-radius: 20px;
+    box-shadow: 5px 3px 3px rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    font: inherit;
+    border: 2px solid rgb(117, 113, 108);
+    cursor: pointer;
+  }
