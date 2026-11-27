@@ -7,6 +7,11 @@ body {
   overflow: hidden;
 }
 
+body {
+  background: #201C3D;
+background: radial-gradient(circle,rgba(32, 28, 61, 1) 0%, rgba(30, 34, 110, 1) 92%);
+}
+
 @font-face {
   font-family: 'JetBrainsMono';
   src: url('../assets/fonts/JetBrainsMono/static/jetbrains-mono-latin-ext-800-normal.woff2') format('woff2'),
@@ -22,7 +27,6 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;          /* scroll container driven programmatically */
-  background-color: rgb(32, 28, 61);
   cursor: grab;
   touch-action: none;        
 
@@ -50,12 +54,15 @@ body {
 
 /* Container de login */
 .container {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
 
+  gap: 20px;
   padding: 25px 20px 40px 25px;
   border-radius: 10px;
   color: black;
@@ -65,8 +72,12 @@ body {
   background-color: white;
 }
 
-#title {
+.title {
   font-size: 25px;
+}
+
+.body {
+  font-size: 16px;
 }
 
 .nav {
@@ -76,6 +87,27 @@ body {
   color: black;
   padding: 5px 10px;
   font: inherit;
+  max-width: fit-content;
   border: 2px solid rgb(117, 113, 108);
   cursor: pointer;
+}
+
+#content-2 {
+  background: #234652;
+  background: radial-gradient(circle, rgba(35, 70, 82, 1) 30%, rgba(22, 154, 166, 1) 92%);
+}
+
+#container-network {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+#container-network line {
+  stroke: white;
+  stroke-width: 3;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
 }

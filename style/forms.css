@@ -14,8 +14,8 @@ html, body {
   }
   
   body {
-    background: radial-gradient(circle, rgba(41,65,143,1) 0%, rgba(63,102,186,1) 69%);
-    /* make body a flex container so children can be centered */
+    background: #5f50d4;
+    background: radial-gradient(circle,rgba(95, 80, 212, 1) 0%, rgba(71, 30, 110, 1) 61%);
     display: flex;
     justify-content: center;   /* horizontal centering */
     align-items: stretch;      /* container still fills height */
@@ -29,11 +29,12 @@ html, body {
     color: black;
     font-size: 15px;
     padding: 40px;
+    width: 600px;
     box-sizing: border-box;    /* padding no longer adds to height */
     height: 100%;              /* of body, which is now 100% of viewport */
   }
 
-  #form {
+  .login-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -47,9 +48,12 @@ html, body {
     position: relative;
     border-radius: 20px;
     box-shadow: 5px 3px 3px rgba(0, 0, 0, 0.5);
-    color: white;
+    color: black;
     padding: 5px 10px;
     font: inherit;
     border: 2px solid rgb(117, 113, 108);
     cursor: pointer;
+    padding-right: 5px;
+    box-sizing: border-box;
+    width: fit-content;
   }

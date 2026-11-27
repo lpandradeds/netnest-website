@@ -1,0 +1,52 @@
+@import url('./service.css');
+
+.payment-container {
+  width: min(520px, 100%);
+  padding: 40px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 18px 50px rgba(20, 12, 50, 0.25);
+}
+
+.payment-container h1 {
+  margin-top: 0;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.payment-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.payment-field input {
+  min-height: 44px;
+  border: 2px solid rgb(117, 113, 108);
+  border-radius: 20px;
+  padding: 8px 14px;
+  font: inherit;
+}
+
+.payment-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.payment-status {
+  min-height: 24px;
+  margin: 18px 0 0;
+  color: #3c315f;
+}
+
+@media (max-width: 700px) {
+  .payment-container {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificação de pagamento</title>
+  <link rel="stylesheet" href="../style/payment.css">
+</head>
+<body>
+  <main class="payment-container">
+    <h1>Verificação de pagamento</h1>
+
+    <form id="payment-form" class="payment-form">
+      <label class="payment-field">
+        Nome no cartão
+        <input type="text" name="card-name" autocomplete="cc-name" required>
+      </label>
+
+      <label class="payment-field">
+        Número do cartão
+        <input type="text" name="card-number" inputmode="numeric" autocomplete="cc-number" maxlength="19" required>
+      </label>
+
+      <label class="payment-field">
+        Validade
+        <input type="text" name="card-expiry" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AAAA" required>
+      </label>
+
+      <label class="payment-field">
+        Código de segurança
+        <input type="password" name="card-cvv" inputmode="numeric" autocomplete="cc-csc" maxlength="4" required>
+      </label>
+
+      <div class="payment-actions">
+        <button type="submit" class="purchase-button">Verificar pagamento</button>
+        <a class="back-button" href="cripto.html">Voltar</a>
+      </div>
+    </form>
+
+    <p id="payment-status" class="payment-status" role="status"></p>
+  </main>
+
+  <script src="../script/payment.js" defer></script>
+</body>
+</html>
